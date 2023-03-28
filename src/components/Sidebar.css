@@ -10,13 +10,13 @@
 	height: 100vh;
 	padding: 0;
 	margin: 0;
-	width: 20vw;
+	width: 30vw;
 	position:fixed;
 	transition: transform 0.2s linear;
 }
 
 .hidden {
-	transform: translate(-20vw);
+	transform: translate(-30vw);
 }
 
 .visible {
