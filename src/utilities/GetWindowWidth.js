@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 
 function useWindowSize() {
-    console.log("I am called");
     const [windowSize, setWindowSize] = useState({
         width: undefined,
         height: undefined
