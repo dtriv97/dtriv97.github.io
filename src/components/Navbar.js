@@ -1,8 +1,10 @@
-import { useState } from "react"
 import { Link } from "react-router-dom"
 import React from 'react'
-import { GiHamburgerMenu as MenuIcon } from 'react-icons/gi'
+import useWindowSize from '../utilities/GetWindowWidth'
+
 import './Navbar.css'
+import HeaderBar from "./HeaderBar"
+import Sidebar from "./Sidebar"
 
 const linkList = [
     {
@@ -24,29 +26,14 @@ const linkList = [
 ]
 
 function Navbar() {
-
-    const [buttonToggle, buttonToggleClicked] = useState(false);
-
+    const windowDim = useWindowSize();
     return (
     <nav className="navbar">
-        <div className="navbar-container">
-            <MenuIcon className="navbar-menu-icon" viewBox="0 0 400 400"/>
-            <ul className="navbar-list">
-                {linkList.map((entry, idx) => {
-                    return (
-                        <Link to={entry.link} className = {
-                            idx !== (linkList.length - 1) ? 'navbar-link' : 'navbar-link-last'
-                        }>
-                            <li>
-                                {entry.name}
-                            </li>
-                        </Link>
-                    )
-                })}
-            </ul>
-        </div>
+        {
+            windowDim.width > 1000 ? < HeaderBar links={ linkList } /> : < Sidebar links={ linkList } />
+        }
     </nav>
   )
 }
 
-export default Navbar
+export default Navbar;
