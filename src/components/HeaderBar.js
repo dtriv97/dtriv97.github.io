@@ -4,7 +4,7 @@ import './HeaderBar.css'
 
 function HeaderBar({ links }) {
     return (
-        <div className="navbar-container">
+        <div className="headerbar-container">
             <ul className="navbar-list">
                 {links.map((entry, idx) => {
                     return (
