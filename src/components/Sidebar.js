@@ -9,22 +9,18 @@ function Sidebar({ links }) {
 	return (
 		<div className="container">
 			{
-				!menuState && <MenuIcon className="icon" onClick={() => {
-					menuClicked(!menuState);
-				}} />
+				!menuState && <MenuIcon className="icon" onClick={() => menuClicked(!menuState)} />
 			}
 			<div className={
 				menuState ? "sidebar-container visible" : "sidebar-container hidden"
 			}>
-				<MenuClose className="icon close" onClick={() => {
-					menuClicked(!menuState);
-				}} />
+				<MenuClose className="icon close" onClick={() => menuClicked(!menuState)} />
 				<ul>
 					{
 						links.map(item => {
 							return (
 								<li key={item.name}>
-									<Link to={item.link} onClick={menuClicked(!menuState)}>
+									<Link to={item.link} onClick={() => menuClicked(!menuState)}>
 										{item.name}
 									</Link>
 								</li>
