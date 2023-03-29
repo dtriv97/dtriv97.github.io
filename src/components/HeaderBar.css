@@ -1,0 +1,40 @@
+.headerbar-container {
+    padding: 0.1rem;
+    margin: 0;
+    background-color: #1a1a1a;
+    display:block;
+    position: fixed;
+    width: 100%;
+    overflow: hidden;
+}
+
+.headerbar-container ul {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', Verdana, sans-serif;
+    font-size: 1rem;
+    margin: 0 5rem 0 0;
+    float: right;
+    position: relative;
+    height: auto;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+    width: fit-content;
+}
+
+.navbar-link {
+    color: white;
+    text-decoration: none;
+    padding-right: 1rem;
+    display: inline-block;
+    margin-top: 1.75rem;
+}
+
+.navbar-link-last {
+    color: white;
+    text-decoration: none;
+    padding-right: 0;
+    display: inline-block;
+    margin-top:1.75rem;
+}
