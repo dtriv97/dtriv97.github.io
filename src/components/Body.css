@@ -8,6 +8,14 @@
     height:100vh;
 }
 
+.home-container {
+    /* background-image: linear-gradient(to bottom right, #4edca6,#034efc,#0b3967); */
+    background-image: url("../assets/background-temp.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 .about-container {
     background-color: #a8a8a8;
 }
