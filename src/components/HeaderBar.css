@@ -1,12 +1,13 @@
 .headerbar-container {
-    padding: 0.1rem;
     margin: 0;
     background-color: #1a1a1a;
-    display:block;
+    display: block;
     position: fixed;
     width: 100%;
     overflow: hidden;
+    height: inherit;
 }
+
 
 .headerbar-container ul {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', Verdana, sans-serif;
