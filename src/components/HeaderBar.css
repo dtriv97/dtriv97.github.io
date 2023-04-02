@@ -1,6 +1,9 @@
 .headerbar-container {
     margin: 0;
-    background-color: #1a1a1a;
+    background-color: rgba(26, 26, 26, 0.65);
+    /* background-image: linear-gradient(to bottom right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0)); */
+    backdrop-filter: blur(15px);
+    box-shadow: 5px 0px 10px rgba(30,30,30,0.5);
     display: block;
     position: fixed;
     width: 100%;
@@ -10,8 +13,8 @@
 
 
 .headerbar-container ul {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', Verdana, sans-serif;
-    font-size: 1rem;
+    font-family: "Montserrat", "Arial", "sans-serif";
+    font-size: 1.3rem;
     margin: 0 5rem 0 0;
     float: right;
     position: relative;
