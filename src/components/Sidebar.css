@@ -6,17 +6,20 @@
 }
 
 .sidebar-container {
-	background-color: #1a1a1a;
+	background-color: rgba(26, 26, 26, 0.75);
+    /* background-image: linear-gradient(to bottom right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0)); */
+    backdrop-filter: blur(15px);
+    box-shadow: 5px 0px 10px rgba(30,30,30,0.5);
 	height: 100vh;
 	padding: 0;
 	margin: 0;
-	width: 30vw;
+	width: 50vw;
 	position:fixed;
 	transition: transform 0.2s linear;
 }
 
 .hidden {
-	transform: translate(-30vw);
+	transform: translate(-50vw);
 }
 
 .visible {
@@ -29,6 +32,7 @@
 	padding-left: 0.5rem;
 	padding-top: 0.5rem;
 	cursor: pointer;
+	color:white;
 }
 
 .close{
