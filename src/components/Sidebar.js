@@ -9,12 +9,12 @@ function Sidebar({ links }) {
 	return (
 		<div className="container">
 			{
-				!menuState && <MenuIcon className="icon" size={40} onClick={() => menuClicked(!menuState)} />
+				!menuState && <MenuIcon className="icon" size={35} onClick={() => menuClicked(!menuState)} />
 			}
 			<div className={
 				menuState ? "sidebar-container visible" : "sidebar-container hidden"
 			}>
-				<MenuClose className="icon close" size={40} onClick={() => menuClicked(!menuState)} />
+				<MenuClose className="icon close" size={35} onClick={() => menuClicked(!menuState)} />
 				<ul>
 					{
 						links.map(item => {
