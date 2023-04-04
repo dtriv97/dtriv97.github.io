@@ -20,6 +20,9 @@
     background-color: #a8a8a8;
 }
 
-p {
-    margin:0;
+.home-profile {
+    width: 22vw;
+    float: left;
+    margin-left: 10vw;
+    margin-top: 10vw;
 }
