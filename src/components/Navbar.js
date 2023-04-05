@@ -27,7 +27,7 @@ const linkList = [
 function Navbar() {
     const windowDim = useWindowSize();
     return (
-    <nav className={ windowDim.width > 1000 ? "navbar" : "navbar-hidden" }>
+    <nav className={ windowDim.width > 1000 ? "navbar" : "navbar navbar-hidden" }>
         {
             windowDim.width > 1000 ? < HeaderBar links={ linkList } /> : < Sidebar links={ linkList } />
         }
