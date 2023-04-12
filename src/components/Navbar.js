@@ -1,8 +1,8 @@
 import React from 'react'
-import useWindowSize from '../utilities/GetWindowWidth'
+// import useWindowSize from '../utilities/GetWindowWidth'
 
 import './Navbar.css'
-import HeaderBar from "./HeaderBar"
+// import HeaderBar from "./HeaderBar"
 import Sidebar from "./Sidebar"
 
 const linkList = [
@@ -25,12 +25,10 @@ const linkList = [
 ]
 
 function Navbar() {
-    const windowDim = useWindowSize();
+    // const windowDim = useWindowSize();
     return (
-    <nav className={ windowDim.width > 1000 ? "navbar" : "navbar navbar-hidden" }>
-        {
-            windowDim.width > 1000 ? < HeaderBar links={ linkList } /> : < Sidebar links={ linkList } />
-        }
+    <nav className="navbar navbar-hidden">
+        <Sidebar links={linkList} />
     </nav>
   )
 }

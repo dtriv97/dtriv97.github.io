@@ -1,10 +1,5 @@
 
 .navbar {
-    top: 1.5rem;
-    position: fixed;
-    width:95%;
-    margin-left: 2.5%;
-    height: 65px;
     font-family: "Montserrat", "sans-serif";
     font-size: 17px;
     font-weight: 400;
@@ -12,7 +7,7 @@
 
 .navbar-hidden {
     top: 0;
-    position: relative;
+    position: fixed;
     margin:0;
     height:0;
     width:0;
