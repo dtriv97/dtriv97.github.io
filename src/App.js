@@ -5,20 +5,20 @@ import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 
 const linkList = [
   {
-      name: 'Home',
+      name: 'Intro',
       link: "/"
   },
   {
       name: "About",
-      link: "/#about"
+      link: "about"
   },
   {
       name: "Photography",
-      link: "/#photography"
+      link: "photography"
   },
   {
       name: "Contact",
-      link: "/#contact"
+      link: "contact"
   }
 ];
 
