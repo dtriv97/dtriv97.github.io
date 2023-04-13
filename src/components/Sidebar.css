@@ -2,7 +2,8 @@
 	width: 100%;
 	top: 0;
 	margin: 0;
-	display: fixed;
+	position: fixed;
+	z-index: 2;
 }
 
 .sidebar-container {
@@ -13,17 +14,29 @@
 	height: 100vh;
 	padding: 0;
 	margin: 0;
-	width: 50vw;
+	width: 20vw;
 	position:fixed;
 	transition: transform 0.2s linear;
 }
 
 .hidden {
-	transform: translate(-50vw);
+	transform: translate(-20vw);
+	box-shadow: none;
 }
 
 .visible {
 	transform: translate(0);
+}
+
+@media only screen and (min-width: 0px) and (max-width: 600px) {
+	.sidebar-container {
+		width:100vw;
+	}
+
+	.hidden {
+		transform: translate(-100vw);
+		box-shadow: none;
+	}
 }
 
 .icon {

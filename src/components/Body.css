@@ -1,6 +1,7 @@
 /* Highest level container */
 .body-container {
     top:0;
+    position:relative;
 }
 
 /* Body section containers */
@@ -43,9 +44,11 @@
 
 .blurb-container {
     top: 170px;
+    margin: 0 auto;
+    width:fit-content;
+    position:relative;
     background-image: linear-gradient(to bottom, rgba(150, 150, 150, 0.25), rgba(150, 150, 150, 0.65));
     backdrop-filter: blur(10px);
-    float: left;
     box-shadow: 0 5px 12px 3px rgba(30, 30, 30, 0.35);
     border-radius: 15px;
     color: rgb(235, 229, 229);
@@ -53,9 +56,6 @@
     padding:1rem 3rem 1rem 3rem;
     font-weight:100;
     text-align: center;
-    margin: 0 auto;
-    width:fit-content;
-    position:relative;
 }
 
 .blurb-container p {
