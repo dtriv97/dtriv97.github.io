@@ -1,7 +1,6 @@
 /* Highest level container */
 .body-container {
     top:0;
-    position:relative;
 }
 
 /* Body section containers */
@@ -29,6 +28,44 @@
 }
 
 /* .home-container section */
+
+.topline-container {
+    display:block;
+    position: relative;
+    margin: 0.5rem auto 0 auto;
+    text-align: center;
+}
+
+.topline-container p {
+    padding: 0;
+    margin: 0 2rem 0 2rem;
+    display: inline;
+    font-weight: 300;
+    font-size: 1.1rem;
+    color: #f5f5f5;
+}
+
+.topline-container .break {
+    font-weight: 100;
+    font-size: 25px;
+}
+
+@media only screen and (min-width: 700px) and (max-width: 950px){
+    .topline-container p {
+        margin: 0 0.1rem 0 0.1rem;
+    }
+}
+
+@media only screen and (max-width: 699px) {
+    .topline-container p {
+        display: block;
+    }
+
+    .topline-container .break {
+        display:none;
+    }
+}
+
 .img-container {
     display:block;
     position: relative;
