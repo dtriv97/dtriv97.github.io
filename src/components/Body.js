@@ -1,8 +1,30 @@
-import { React } from 'react'
-import './Body.css'
+import React from 'react'
+import JobTimeline from './JobTimeline'
 import HomeImage from '../assets/home_photo.jpg'
+import './Body.css'
 
 function Body() {
+    const jobItems = [
+        {
+            name: "Product Development Engineer",
+            organisation: "Fisher & Paykel Healthcare - Surgical Operations Team",
+            duration: "Nov 2022 - Present",
+            description: "Software development on key product using C/C++ and testing/analysis with Python and C# scripting"
+        },
+        {
+            name: "Product Development Engineer",
+            organisation: "Fisher & Paykel Appliances - Refrigeration & Connected Software",
+            duration: "Jan 2020 - Nov 2022",
+            description: "Embedded software development working on key projects in refrigeration team, using bare-metal embedded C and testing with Python"
+        },
+        {
+            name: "Software Engineer (Intern)",
+            organisation: "LeapThought NZ - Software Development Team",
+            duration: "Nov 2018 - Feb 2019",
+            description: "App Development using React Native. Front-End development using React JS"
+        },
+    ];
+
     return (
         <div className='body-container'>
             <div className='body-section home-container'>
@@ -26,6 +48,10 @@ function Body() {
                 </div>
             </div>
             <div className="body-section about-container">
+                <div className='about-statement'>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut posuere dictum odio, ut tristique quam ullamcorper at. In malesuada iaculis purus ut rutrum. Donec vitae urna ac lacus pellentesque finibus a sed elit. Suspendisse id gravida enim, eu faucibus est. Etiam pellentesque, eros a euismod molestie, quam leo fringilla odio.</p>
+                    <JobTimeline jobs={jobItems}/>
+                </div>
             </div>
         </div>
     )
