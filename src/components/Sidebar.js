@@ -1,4 +1,5 @@
-import { React, useState } from 'react'
+import React from 'react';
+import { useState } from 'react';
 import { MdMenu as MenuIcon, MdClose as MenuClose } from 'react-icons/md'
 import { Link } from 'react-router-dom'
 import './Sidebar.css'
