@@ -70,14 +70,13 @@
 .img-container {
     display:block;
     position: relative;
-    top: 180px;
+    top: 210px;
     margin: 0 auto;
     z-index:1;
 }
 
 .home-profile {
     width: 200px;
-    box-shadow: 0 5px 12px 3px rgba(30, 30, 30, 0.35);
 }
 
 .blurb-container {
@@ -91,7 +90,7 @@
     border-radius: 15px;
     color: rgb(235, 229, 229);
     font-size: 40px;
-    padding:1rem 3rem 1rem 3rem;
+    padding:2rem 3rem 1rem 3rem;
     font-weight:100;
     text-align: center;
 }
