@@ -49,9 +49,9 @@ function Body() {
             </div>
             <div className="body-section about-container">
                 <div className='about-statement'>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut posuere dictum odio, ut tristique quam ullamcorper at. In malesuada iaculis purus ut rutrum. Donec vitae urna ac lacus pellentesque finibus a sed elit. Suspendisse id gravida enim, eu faucibus est. Etiam pellentesque, eros a euismod molestie, quam leo fringilla odio.</p>
-                    <JobTimeline jobs={jobItems}/>
+                    <p>I am a software engineer with extensive experience in embedded, web, and app development, as well as testing and analysis, working in a wide variety of teams and applications. Aside from professional work, my personal interests are in photography and editing which allows me to visually express my thoughts.</p>
                 </div>
+                <JobTimeline className='jobTimeline' jobs={jobItems}/>
             </div>
         </div>
     )
