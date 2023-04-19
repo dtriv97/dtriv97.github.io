@@ -9,26 +9,28 @@ import {
 } from '@mui/lab';
 import './JobTimeline.css'
 
-function JobTimeline({jobs}) {
+function JobTimeline({jobs, className}) {
     return (
-        <Timeline className="timeline" position="alternate">
-            { jobs.map((item, index) => {
-                return (
-                    <TimelineItem>
-                        <TimelineSeparator>
-                            <TimelineDot />
-                            <TimelineConnector />
-                        </TimelineSeparator>
-                        <TimelineContent>
-                            <p className="job-duration">{item.duration}</p>
-                            <p className="job-title">{item.name}</p>
-                            <p className="org-name">{item.organisation}</p>
-                            <p className="job-desc">{item.description}</p>
-                        </TimelineContent>
-                    </TimelineItem>
-                )
-            })}
-        </Timeline>
+        <div className={className ? className : null}>
+            <Timeline className="timeline" position="alternate">
+                { jobs.map((item, index) => {
+                    return (
+                        <TimelineItem>
+                            <TimelineSeparator>
+                                <TimelineDot variant="filled" />
+                                <TimelineConnector />
+                            </TimelineSeparator>
+                            <TimelineContent>
+                                <p className="job-duration">{item.duration}</p>
+                                <p className="job-title">{item.name}</p>
+                                <p className="org-name">{item.organisation}</p>
+                                <p className="job-desc">{item.description}</p>
+                            </TimelineContent>
+                        </TimelineItem>
+                    )
+                })}
+            </Timeline>
+        </div>
     )
 }
 
