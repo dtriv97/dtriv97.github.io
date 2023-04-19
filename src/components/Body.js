@@ -1,6 +1,6 @@
 import React from 'react'
 import JobTimeline from './JobTimeline'
-import HomeImage from '../assets/home_photo.jpg'
+import HomeImage from '../assets/profile-photo-circle.png'
 import './Body.css'
 
 function Body() {

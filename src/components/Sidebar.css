@@ -51,14 +51,14 @@
 	padding-left: 0.5rem;
 	padding-top: 0.5rem;
 	cursor: pointer;
-	color:white;
+	color: rgb(20, 144, 226);
 }
 
 .close{
 	float: right;
 	padding-left: 0;
 	padding-right:0.5rem;
-	color: #f5f5f5;
+	color: rgb(20, 144, 226);
 	position: static;
 }
 
