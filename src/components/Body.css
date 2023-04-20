@@ -41,8 +41,8 @@
     padding: 0;
     margin: 0 2rem 0 2rem;
     display: inline;
-    font-weight: 300;
-    font-size: 1.1rem;
+    font-weight: 500;
+    font-size: 1.2rem;
     color: #1a1a1a;
 }
 
@@ -103,6 +103,7 @@
 .name-para {
     font-weight: 800;
     font-size: 60px;
+    color: rgb(75, 166, 228);
 }
 
 /* .about-container section */
