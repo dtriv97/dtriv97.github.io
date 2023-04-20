@@ -28,6 +28,10 @@
     padding: 50px;
 }
 
+.skills-container {
+    background: linear-gradient(to right bottom, rgb(30, 30, 30, 0.75), rgb(75, 166, 228));
+}
+
 /* .home-container section */
 
 .topline-container {

@@ -1,6 +1,7 @@
 import React from 'react'
 import JobTimeline from './JobTimeline'
 import HomeImage from '../assets/profile-photo-circle-bw.png'
+import Skills from '../components/Skills'
 import './Body.css'
 
 function Body() {
@@ -52,6 +53,9 @@ function Body() {
                     <p>I am a software engineer with extensive experience in embedded, web, and app development, as well as testing and analysis, working in a wide variety of teams and applications. Aside from professional work, my personal interests are in photography and editing which allows me to visually express my thoughts.</p>
                 </div>
                 <JobTimeline className='jobTimeline' jobs={jobItems}/>
+            </div>
+            <div className="body-section skills-container">
+                <Skills />
             </div>
         </div>
     )
