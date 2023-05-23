@@ -29,7 +29,11 @@
 }
 
 .skills-container {
-    background: linear-gradient(to right bottom, rgb(30, 30, 30, 0.75), rgb(75, 166, 228));
+    /* background: linear-gradient(to right bottom, rgb(30, 30, 30, 0.75), rgb(75, 166, 228)); */
+    background-image: url("../assets/background-temp.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 /* .home-container section */

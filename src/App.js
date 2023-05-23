@@ -14,6 +14,10 @@ const linkList = [
       link: "about"
   },
   {
+      name: "Skills",
+      link: "skills"
+  },
+  {
       name: "Photography",
       link: "photography"
   },
