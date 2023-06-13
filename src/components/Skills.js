@@ -5,14 +5,17 @@ import './Skills.css';
 const SkillStates = [
     {
         "title" : "Embedded Systems",
+        "img" : "https://www.svgrepo.com/show/198478/circuit-board-microchip.svg",
         "body" : "Lorem IPSUM - Embedded Sys"
     },
     {
         "title" : "Web & Mobile App",
+        "img" : "https://www.svgrepo.com/show/520234/whatsappwebtogo.svg",
         "body" : "Lorem Ipsum - Web"
     },
     {
         "title" : "Data Analytics",
+        "img" : "https://www.svgrepo.com/show/500529/data-line.svg",
         "body" : "Lorem Ipsum - Data"
     }
 ]
@@ -31,11 +34,11 @@ function Skills() {
                 })
             }
             <div className="cardContainer">
-                <div className="cardGraphic">
-                    <img src="https://www.svgrepo.com/show/198478/circuit-board-microchip.svg" />
-                </div>
                 <div className="cardInfo">
                     <p>{sState["body"]}</p>
+                </div>
+                <div className="cardGraphic">
+                    <img src={sState.img} />
                 </div>
             </div>
         </div>
