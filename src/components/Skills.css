@@ -62,5 +62,14 @@
 .cardGraphic img {
     height: 150px;
     width: 150px;
+    filter: invert(0.93);
 }
 
+.cardInfo {
+    position:relative;
+    left:3rem;
+}
+
+.cardInfo p {
+    color: #e9e9e9;
+}
