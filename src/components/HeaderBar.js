@@ -8,13 +8,13 @@ function HeaderBar({ links }) {
             <ul className="navbar-list">
                 {links.map((entry, idx) => {
                     return (
-                        <Link key={entry.name} to={entry.link} className = {
-                            idx !== (links.length - 1) ? 'navbar-link' : 'navbar-link-last'
-                        }>
-                            <li>
+                        <li>
+                            <Link key={entry.name} to={entry.link} className = {
+                                idx !== (links.length - 1) ? 'navbar-link' : 'navbar-link last-link'
+                            }>
                                 {entry.name}
-                            </li>
-                        </Link>
+                            </Link>
+                        </li>
                     )
                 })}
             </ul>
