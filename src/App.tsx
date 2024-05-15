@@ -1,8 +1,7 @@
-import React from 'react';
+import { Route, Router, Routes } from 'react-router-dom';
 import './App.css';
-import Sidebar from './components/Sidebar';
 import Body from './components/Body';
-import { HashRouter as Router, Route, Routes } from 'react-router-dom';
+import Sidebar from "./components/Sidebar";
 
 const linkList = [
   {
@@ -27,16 +26,14 @@ const linkList = [
   }
 ];
 
-function App() {
+export default function App() {
   return (
     <Router>
       <Sidebar links={linkList} />
       <Body />
       <Routes>
-        <Route path="/" exact/>
+        <Route path="/"/>
       </Routes>
     </Router>
   );
 }
-
-export default App;

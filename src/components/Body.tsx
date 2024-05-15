@@ -1,10 +1,8 @@
-import React from 'react'
-import JobTimeline from './JobTimeline'
-import HomeImage from '../assets/profile-photo.png'
-import Skills from '../components/Skills'
-import './Body.css'
+import HomeImage from "../assets/profile-photo.png";
+import './Body.css';
+import Skills from './Skills';
 
-function Body() {
+export default function Body() {
     const jobItems = [
         {
             name: "Product Development Engineer",
@@ -41,10 +39,10 @@ function Body() {
                 </div>
                 <div className='blurb-container'>
                     <p>
-                        Hi, I'm
+                        "Hi, Im"
                     </p>
                     <p className='name-para'>
-                        DHAIRYA TRIVEDI
+                        "DHAIRYA TRIVEDI"
                     </p>
                 </div>
             </div>
@@ -52,7 +50,7 @@ function Body() {
                 <div className='about-statement'>
                     <p>I am a software engineer with extensive experience in embedded, web, and app development, as well as testing and analysis, working in a wide variety of teams and applications. Aside from professional work, my personal interests are in photography and editing which allows me to visually express my thoughts.</p>
                 </div>
-                <JobTimeline className='jobTimeline' jobs={jobItems}/>
+                {/* <JobTimeline className='jobTimeline' jobs={jobItems}/> */}
             </div>
             <div className="body-section skills-container">
                 <Skills />
@@ -60,5 +58,3 @@ function Body() {
         </div>
     )
 };
-
-export default Body;

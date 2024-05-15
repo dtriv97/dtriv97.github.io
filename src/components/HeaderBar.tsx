@@ -1,14 +1,24 @@
-import { React } from 'react'
-import { Link } from 'react-router-dom'
-import './HeaderBar.css'
+import { Link } from 'react-router-dom';
+import './HeaderBar.css';
 
-function HeaderBar({ links }) {
+interface HeaderLink {
+    name: string
+    link: string
+}
+
+export interface HeaderBarProps {
+    links: HeaderLink[]
+}
+
+export default function HeaderBar(props: HeaderBarProps) {
+    const {links} = props
+    
     return (
         <div className="headerbar-container">
             <ul className="navbar-list">
                 {links.map((entry, idx) => {
                     return (
-                        <li>
+                        <li key={entry.link}>
                             <Link key={entry.name} to={entry.link} className = {
                                 idx !== (links.length - 1) ? 'navbar-link' : 'navbar-link last-link'
                             }>
@@ -21,5 +31,3 @@ function HeaderBar({ links }) {
         </div>
     )
 };
-
-export default HeaderBar;
