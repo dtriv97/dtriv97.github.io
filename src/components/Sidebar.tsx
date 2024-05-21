@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import "./Sidebar.css";
 
 export interface SidebarLink {
@@ -7,9 +6,13 @@ export interface SidebarLink {
 	link: string;
 }
 
-export default function Sidebar(props: SidebarLink[]) {
+interface SidebarProps {
+	links: SidebarLink[];
+}
+
+export default function Sidebar(props: SidebarProps) {
 	const [menuState, menuClicked] = useState(false);
-	const links = props;
+	const { links } = props;
 
 	return (
 		<div className="container">
@@ -24,9 +27,9 @@ export default function Sidebar(props: SidebarLink[]) {
 					{links.map((item) => {
 						return (
 							<li key={item.name}>
-								<Link to={item.link} onClick={() => menuClicked(!menuState)}>
-									{item.name}
-								</Link>
+								{/* <Link to={item.link} onClick={() => menuClicked(!menuState)}> */}
+								{item.name}
+								{/* </Link> */}
 							</li>
 						);
 					})}

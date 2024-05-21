@@ -1,4 +1,4 @@
-// import HomeImage from "../assets/profile-photo.png";
+import HomeImage from "../assets/profile-photo.png";
 import "./Body.css";
 import Skills from "./Skills";
 
@@ -39,11 +39,11 @@ export default function Body() {
 					<p> Landscape Photography </p>
 				</div>
 				<div className="img-container">
-					{/* <img src={HomeImage} className="home-profile" alt="Home_Image"/> */}
+					<img src={HomeImage} className="home-profile" alt="Home_Image" />
 				</div>
 				<div className="blurb-container">
-					<p>"Hi, Im"</p>
-					<p className="name-para">"DHAIRYA TRIVEDI"</p>
+					<p>Hi, Im</p>
+					<p className="name-para">DHAIRYA TRIVEDI</p>
 				</div>
 			</div>
 			<div className="body-section about-container">

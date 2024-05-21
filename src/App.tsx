@@ -28,7 +28,7 @@ const linkList: SidebarLink[] = [
 export default function App() {
 	return (
 		<>
-			<Sidebar {...linkList} />
+			<Sidebar links={linkList} />
 			<Body />
 		</>
 	);
