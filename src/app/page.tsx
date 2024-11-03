@@ -29,7 +29,7 @@ export default function Home() {
           style={{
             position: "absolute",
             top: "-50px",
-            left: "50px",
+            left: "43%",
             width: "100px",
             height: "100px",
             borderRadius: "50%",

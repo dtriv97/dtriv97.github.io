@@ -1,3 +1,4 @@
+import Navbar from "@/components/navbar";
 import { Montserrat } from "next/font/google";
 
 const montserrat = Montserrat({
@@ -31,6 +32,7 @@ export default function RootLayout({
           margin: 0,
         }}
       >
+        <Navbar />
         {children}
       </body>
     </html>
