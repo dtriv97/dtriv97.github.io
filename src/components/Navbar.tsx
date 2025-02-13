@@ -20,13 +20,10 @@ export default function Navbar() {
 
   return (
     <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ""}`}>
-      <div className={styles.logo}>
-        <img src={dtriv_logo.src} />
+      <div className={styles.logoContainer}>
+        <img src={dtriv_logo.src} className={styles.logo} />
       </div>
-      <ul className={styles["nav-links"]}>
-        <li>
-          <a href="#home">Home</a>
-        </li>
+      <ul className={styles.navLinks}>
         <li>
           <a href="#about">About</a>
         </li>

@@ -23,7 +23,7 @@ export default function RootLayout({
       style={{
         fontFamily: `${montserrat.style.fontFamily}, sans-serif`,
         fontWeight: "200",
-        fontSize: "14px",
+        fontSize: "16px",
       }}
     >
       <body
