@@ -1,10 +1,10 @@
-import IntroCard from "./introCard";
+import IntroSection from "./introCard";
 import styles from "./page.module.css";
 
 export default function Home() {
   return (
     <>
-      <IntroCard />
+      <IntroSection />
       <div className={styles.aboutContainer}>
         <h2 className={styles.aboutTitle}>About Me</h2>
         <p className={styles.aboutText}>
