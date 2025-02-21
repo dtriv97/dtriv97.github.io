@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar";
 import { Montserrat } from "next/font/google";
 
 const montserrat = Montserrat({
-  weight: ["100", "400", "600", "800"],
+  weight: ["100", "400", "500", "600", "800"],
   subsets: ["latin"],
   style: ["normal", "italic"],
 });
@@ -22,7 +22,7 @@ export default function RootLayout({
       lang="en"
       style={{
         fontFamily: `${montserrat.style.fontFamily}, sans-serif`,
-        fontWeight: "200",
+        fontWeight: "400",
         fontSize: "16px",
       }}
     >
