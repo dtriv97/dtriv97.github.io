@@ -1,5 +1,8 @@
 import { Group, Stack, Title } from "@mantine/core";
 import styles from "./introCard.module.css";
+import photoIcon from "../assets/photo_icon.svg"
+import fullStackIcon from "../assets/full-stack_icon.svg"
+import embeddedIcon from "../assets/embedded_icon.svg"
 
 export default function IntroSection() {
   return (
@@ -9,10 +12,10 @@ export default function IntroSection() {
         <h1 className={styles.nameText}>Dhairya Trivedi</h1>
       </div>
       <div className={styles.subtitleWrapper}>
-        <Group>
-          <SubtitleCard title="Embedded" img="" />
-          <SubtitleCard title="Full Stack" img="" />
-          <SubtitleCard title="Photography" img="" />
+        <Group justify="space-between" align="baseline">
+          <SubtitleCard title="Embedded" img={embeddedIcon.src} />
+          <SubtitleCard title="Full Stack" img={fullStackIcon.src} />
+          <SubtitleCard title="Photography" img={photoIcon.src} />
         </Group>
       </div>
     </div>
@@ -21,9 +24,9 @@ export default function IntroSection() {
 
 function SubtitleCard({ title, img }: { title: string; img: string }) {
   return (
-    <Stack>
-      <Title size={5}>{title}</Title>
-      <img src={img} alt="img" />
+    <Stack className={styles.subtitleCard}>
+      <img src={img} alt="img" className={styles.subtitleImage} />
+      <Title order={1} style={{fontWeight: "300"}}>{title}</Title>
     </Stack>
   );
 }
