@@ -81,7 +81,9 @@ export default function Navbar() {
       <div className={styles.mobileNavContainer}>
         <Group style={{ width: '100%' }}>
           <div className={styles.logoContainer}>
-            {scrolled && <img src={dtriv_logo.src} className={styles.logo} />}
+            {scrolled && (
+              <img src={dtriv_logo.src} className={styles.logo} style={{ height: '30px' }} />
+            )}
           </div>
           <img
             src={scrolled ? menuIconDark.src : menuIcon.src}
