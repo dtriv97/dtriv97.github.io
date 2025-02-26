@@ -4,8 +4,11 @@
   background-size: cover;
   background-position: top;
   height: 100vh;
-  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 85%, #1a1a1a),
-    url("../assets/background-temp-5\ 1.jpg");
+  background-image:
+    linear-gradient(180deg, rgba(0, 0, 0, 0) 85%, #1a1a1a),
+    url('../assets/background-temp-5\ 1.jpg');
+  display: flex;
+  justify-content: center;
 }
 
 .introCard {
@@ -14,12 +17,12 @@
   backdrop-filter: blur(20px);
   border-radius: 10px;
   padding: 2rem 10rem;
-  margin-top: 5rem;
   position: relative;
-  width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 10rem;
+  margin-right: 10rem;
   margin-top: 7.5rem;
+  width: fit-content;
+  height: fit-content;
 }
 
 .introText {
@@ -40,11 +43,13 @@
 .subtitleWrapper {
   position: absolute;
   bottom: 0;
-  background: linear-gradient(0deg, #1a1a1a 75%, transparent 100%);
+  background: linear-gradient(0deg, #1a1a1a 65%, transparent 100%);
   width: 100%;
-  padding-left: 10rem;
-  padding-right: 10rem;
-  padding-top: 5rem;
+  padding: 10rem 10rem 0 10rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .subtitleCard {
@@ -57,4 +62,59 @@
   max-width: 50px;
   object-fit: contain;
   margin: auto;
+}
+
+.subtitleText {
+  font-weight: 300;
+  font-size: 2rem;
+}
+
+@media screen and (max-width: 1100px) {
+  .introCard {
+    margin-right: 2rem;
+    margin-left: 2rem;
+    width: 100%;
+  }
+
+  .subtitleCardWrapper {
+    width: 100%;
+    justify-content: space-evenly;
+  }
+
+  .subtitleWrapper {
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
+
+  .subtitleCard {
+    padding: 0.75rem;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .introCard {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    width: 100%;
+  }
+
+  .introText {
+    font-size: 1.5rem;
+  }
+
+  .nameText {
+    font-size: 2.5rem;
+    margin: 0px;
+  }
+
+  .subtitleText {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .subtitleImage {
+    max-width: 25px;
+  }
 }

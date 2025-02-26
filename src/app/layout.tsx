@@ -1,38 +1,29 @@
-import Navbar from "@/components/Navbar";
-import {
-  ColorSchemeScript,
-  createTheme,
-  mantineHtmlProps,
-  MantineProvider,
-} from "@mantine/core";
-import "@mantine/core/styles.css";
-import { Montserrat } from "next/font/google";
+import Navbar from '@/components/Navbar';
+import { ColorSchemeScript, createTheme, mantineHtmlProps, MantineProvider } from '@mantine/core';
+import '@mantine/core/styles.css';
+import { Montserrat } from 'next/font/google';
 
 const montserrat = Montserrat({
-  weight: ["100", "400", "500", "600", "800"],
-  subsets: ["latin"],
-  style: ["normal", "italic"],
+  weight: ['100', '400', '500', '600', '800'],
+  subsets: ['latin'],
+  style: ['normal', 'italic'],
 });
 
 export const metadata = {
-  title: "Dhairya Trivedi",
-  description: "Engineer, musician and photographer",
+  title: 'Dhairya Trivedi',
+  description: 'Engineer, musician and photographer',
 };
 
 const theme = createTheme({
   fontFamily: `${montserrat.style.fontFamily}, sans-serif`,
 });
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="en"
       style={{
-        fontWeight: "400",
+        fontWeight: '400',
       }}
       {...mantineHtmlProps}
     >
