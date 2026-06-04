@@ -39,6 +39,7 @@ export const works: WorkItem[] = [
     start: '2024',
     description: 'Built a live monitoring dashboard for distributed systems and service health.',
     stack: ['React', 'TypeScript', 'Node.js', 'WebSockets'],
+    url: 'https://github.com/dtriv97',
     relatedRoleId: 'role-senior-engineer',
   },
   {
@@ -48,6 +49,7 @@ export const works: WorkItem[] = [
     start: '2023',
     description: 'Created an onboarding workflow for edge devices with secure provisioning steps.',
     stack: ['Go', 'AWS', 'PostgreSQL'],
+    url: 'https://github.com/dtriv97',
     relatedRoleId: 'role-senior-engineer',
   },
   {
@@ -67,6 +69,7 @@ export const works: WorkItem[] = [
     start: '2022',
     description: 'Developed workflow automation for internal documentation and support triage.',
     stack: ['React', 'Python', 'PostgreSQL'],
+    url: 'https://github.com/dtriv97',
     relatedRoleId: 'role-full-stack',
   },
 ];

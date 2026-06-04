@@ -1,34 +1,49 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
-const options: IntersectionObserverInit = {
-  rootMargin: '-35% 0px -50% 0px',
-  threshold: [0.2, 0.4, 0.6],
+const getHeaderOffset = () => {
+  const value = getComputedStyle(document.documentElement).getPropertyValue('--header-height');
+  const parsed = Number.parseFloat(value);
+  return Number.isFinite(parsed) ? parsed : 72;
+};
+
+const resolveActiveSection = (ids: string[]) => {
+  const scrollY = window.scrollY;
+  const offset = getHeaderOffset();
+  const probe = scrollY + offset + 96;
+
+  const docBottom = document.documentElement.scrollHeight - window.innerHeight - 8;
+  if (scrollY >= docBottom) {
+    return ids[ids.length - 1] ?? ids[0];
+  }
+
+  let active = ids[0];
+  for (const id of ids) {
+    const section = document.getElementById(id);
+    if (!section) continue;
+    if (section.offsetTop <= probe) {
+      active = id;
+    }
+  }
+
+  return active;
 };
 
 export const useScrollSpy = (ids: string[]) => {
-  const [active, setActive] = useState(ids[0] ?? 'home');
+  const [active, setActive] = useState(() => ids[0] ?? 'home');
 
-  useEffect(() => {
-    const sections = ids
-      .map((id) => document.getElementById(id))
-      .filter((element): element is HTMLElement => element !== null);
-
-    if (!sections.length) return;
-
-    const observer = new IntersectionObserver((entries) => {
-      const visible = entries
-        .filter((entry) => entry.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-
-      if (visible[0]?.target.id) {
-        setActive(visible[0].target.id);
-      }
-    }, options);
-
-    sections.forEach((section) => observer.observe(section));
-
-    return () => observer.disconnect();
+  const updateActive = useCallback(() => {
+    setActive(resolveActiveSection(ids));
   }, [ids]);
 
-  return active;
+  useEffect(() => {
+    updateActive();
+    window.addEventListener('scroll', updateActive, { passive: true });
+    window.addEventListener('resize', updateActive);
+    return () => {
+      window.removeEventListener('scroll', updateActive);
+      window.removeEventListener('resize', updateActive);
+    };
+  }, [updateActive]);
+
+  return { active, setActive };
 };

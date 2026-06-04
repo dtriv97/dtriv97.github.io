@@ -10,7 +10,7 @@ export const Testimonials = () => {
         <div className="testimonials-track" aria-label="Scrolling testimonials">
           {marqueeItems.map((item, index) => (
             <article key={`${item.id}-${index}`} className="testimonial-card">
-              <p className="quote">"{item.quote}"</p>
+              <p className="quote">{item.quote}</p>
               <p className="author">{item.name}</p>
               <p className="author-role">{item.role}</p>
             </article>
@@ -20,7 +20,7 @@ export const Testimonials = () => {
       <div className="testimonials-mobile">
         {testimonials.map((item) => (
           <article key={item.id} className="testimonial-card">
-            <p className="quote">"{item.quote}"</p>
+            <p className="quote">{item.quote}</p>
             <p className="author">{item.name}</p>
             <p className="author-role">{item.role}</p>
           </article>

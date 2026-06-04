@@ -10,7 +10,8 @@ const navItems = [
 ];
 
 export const Header = () => {
-  const activeId = useScrollSpy(navItems.map((item) => item.id));
+  const sectionIds = navItems.map((item) => item.id);
+  const { active: activeId, setActive: setActiveId } = useScrollSpy(sectionIds);
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -30,7 +31,13 @@ export const Header = () => {
     return () => window.removeEventListener('keydown', onEsc);
   }, []);
 
+  useEffect(() => {
+    document.body.classList.toggle('menu-open', open);
+    return () => document.body.classList.remove('menu-open');
+  }, [open]);
+
   const onNavigate = (id: string) => {
+    setActiveId(id);
     scrollToSection(id);
     setOpen(false);
   };
@@ -41,12 +48,14 @@ export const Header = () => {
         <img src="/logo.png" alt="Dhairya Trivedi logo" />
       </button>
 
-      <nav className={`nav ${open ? 'is-open' : ''}`} aria-label="Main navigation">
+      <nav className="nav" aria-label="Main navigation">
         {navItems.map((item) => (
           <button
             key={item.id}
+            type="button"
             className={`nav-link ${activeId === item.id ? 'active' : ''}`}
             onClick={() => onNavigate(item.id)}
+            aria-current={activeId === item.id ? 'true' : undefined}
           >
             {item.label}
           </button>
@@ -54,6 +63,7 @@ export const Header = () => {
       </nav>
 
       <button
+        type="button"
         className={`menu-toggle ${open ? 'is-open' : ''}`}
         onClick={() => setOpen((prev) => !prev)}
         aria-expanded={open}
@@ -69,8 +79,10 @@ export const Header = () => {
         {navItems.map((item) => (
           <button
             key={`${item.id}-mobile`}
+            type="button"
             className={`mobile-nav-link ${activeId === item.id ? 'active' : ''}`}
             onClick={() => onNavigate(item.id)}
+            aria-current={activeId === item.id ? 'true' : undefined}
           >
             {item.label}
           </button>
