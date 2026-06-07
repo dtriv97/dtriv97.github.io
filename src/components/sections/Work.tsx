@@ -3,10 +3,16 @@ import { works, type WorkItem } from '@/data/works';
 import { Section } from '@/components/ui/Section';
 import { WorkTimelineCard } from '@/components/ui/WorkTimelineCard';
 
-const itemSort = (a: WorkItem, b: WorkItem) => Number(b.start) - Number(a.start);
+/** Newest first; stable order for same year (roles before projects). */
+const sortByTimeline = (a: WorkItem, b: WorkItem) => {
+  const yearDiff = Number(b.start) - Number(a.start);
+  if (yearDiff !== 0) return yearDiff;
+  if (a.kind !== b.kind) return a.kind === 'role' ? -1 : 1;
+  return 0;
+};
 
 export const Work = () => {
-  const sortedWorks = useMemo(() => [...works].sort(itemSort), []);
+  const sortedWorks = useMemo(() => [...works].sort(sortByTimeline), []);
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
   return (
@@ -17,13 +23,36 @@ export const Work = () => {
           const isExpanded = expandedId === item.id;
 
           return (
-            <WorkTimelineCard
+            <div
               key={item.id}
-              item={item}
-              side={side}
-              isExpanded={isExpanded}
-              onToggle={() => setExpandedId((prev) => (prev === item.id ? null : item.id))}
-            />
+              className={`timeline-row ${item.kind === 'project' ? 'timeline-row--project' : ''}`}
+            >
+              <div className="timeline-row-side timeline-row-side--left">
+                {side === 'left' ? (
+                  <WorkTimelineCard
+                    item={item}
+                    side="left"
+                    isExpanded={isExpanded}
+                    onToggle={() => setExpandedId((prev) => (prev === item.id ? null : item.id))}
+                  />
+                ) : null}
+              </div>
+
+              <div className="timeline-row-marker" aria-hidden="true">
+                <span className={`timeline-dot ${item.kind}`} />
+              </div>
+
+              <div className="timeline-row-side timeline-row-side--right">
+                {side === 'right' ? (
+                  <WorkTimelineCard
+                    item={item}
+                    side="right"
+                    isExpanded={isExpanded}
+                    onToggle={() => setExpandedId((prev) => (prev === item.id ? null : item.id))}
+                  />
+                ) : null}
+              </div>
+            </div>
           );
         })}
       </div>

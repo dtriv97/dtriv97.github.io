@@ -42,7 +42,6 @@ export const WorkTimelineCard = ({
       tabIndex={0}
       aria-expanded={isExpanded}
     >
-      <div className="timeline-dot" aria-hidden="true" />
       {item.kind === 'project' && item.relatedRoleId ? (
         <p className="timeline-connector">
           Built while at {roleLabelById[item.relatedRoleId] ?? 'previous role'}
