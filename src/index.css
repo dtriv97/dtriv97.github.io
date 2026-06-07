@@ -283,6 +283,7 @@ main {
 
 .hero-section.is-animated .hero-kicker {
   animation: fadeUp 700ms ease both;
+  animation-delay: 0ms;
 }
 
 .hero-overlay h1 {
@@ -296,6 +297,7 @@ main {
 
 .hero-section.is-animated .hero-overlay h1 {
   animation: fadeUp 900ms ease both;
+  animation-delay: 80ms;
 }
 
 .hero-copy {
@@ -309,6 +311,12 @@ main {
 
 .hero-section.is-animated .hero-copy {
   animation: fadeUp 1100ms ease both;
+  animation-delay: 160ms;
+}
+
+.hero-section.is-animated .hero-tagline--animated {
+  animation: fadeUp 900ms ease both;
+  animation-delay: 240ms;
 }
 
 .hero-tagline {
