@@ -2,7 +2,7 @@ import path from 'path';
 import type { IncomingMessage, ServerResponse } from 'http';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { handleContactSubmission, type ContactPayload } from './src/lib/contactHandler';
+import { handleContactSubmission, type ContactPayload } from './api/lib/contactHandler';
 
 const readJsonBody = (req: IncomingMessage): Promise<ContactPayload> =>
   new Promise((resolve, reject) => {

@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { handleContactSubmission, type ContactPayload } from '../src/lib/contactHandler';
+import { handleContactSubmission, type ContactPayload } from './lib/contactHandler';
 
 /**
  * Contact form handler (v1 stub).
