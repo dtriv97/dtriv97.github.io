@@ -1,11 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import { useRafScroll } from '@/hooks/useRafScroll';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
 import { scrollToSection } from '@/lib/scrollTo';
 
 const navItems = [
   { id: 'home', label: 'Home' },
-  { id: 'work', label: 'Work' },
-  { id: 'testimonials', label: 'References' },
+  { id: 'about', label: 'About' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'projects', label: 'Projects' },
   { id: 'contact', label: 'Contact' },
 ];
 
@@ -15,12 +17,8 @@ export const Header = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    onScroll();
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+  const syncScrolled = useCallback(() => setScrolled(window.scrollY > 40), []);
+  useRafScroll(syncScrolled);
 
   useEffect(() => {
     const onEsc = (event: KeyboardEvent) => {
@@ -45,7 +43,7 @@ export const Header = () => {
   return (
     <header className={`site-header ${scrolled ? 'is-scrolled' : ''}`}>
       <button className="brand" onClick={() => onNavigate('home')} aria-label="Go to home section">
-        <img src="/logo.png" alt="Dhairya Trivedi logo" />
+        <img src="/logo.png" alt="Dhairya Trivedi logo" width={160} height={36} decoding="async" />
       </button>
 
       <nav className="nav" aria-label="Main navigation">

@@ -1,8 +1,9 @@
 import { Header } from './components/layout/Header';
+import { About } from './components/sections/About';
 import { Contact } from './components/sections/Contact';
+import { Experience } from './components/sections/Experience';
 import { Hero } from './components/sections/Hero';
-import { Testimonials } from './components/sections/Testimonials';
-import { Work } from './components/sections/Work';
+import { Projects } from './components/sections/Projects';
 
 export const App = () => {
   return (
@@ -10,8 +11,9 @@ export const App = () => {
       <Header />
       <main>
         <Hero />
-        <Work />
-        <Testimonials />
+        <About />
+        <Experience />
+        <Projects />
         <Contact />
       </main>
       <footer className="site-footer">Built with React, TypeScript and intention.</footer>

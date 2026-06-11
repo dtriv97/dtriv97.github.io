@@ -1,19 +1,11 @@
 import { useEffect, useState } from 'react';
+import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
 
 const taglines = ['embedded systems', 'full-stack apps', 'useful tools'];
 
 export const Hero = () => {
   const [taglineIndex, setTaglineIndex] = useState(0);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const syncMotionPreference = () => setPrefersReducedMotion(mediaQuery.matches);
-
-    syncMotionPreference();
-    mediaQuery.addEventListener('change', syncMotionPreference);
-    return () => mediaQuery.removeEventListener('change', syncMotionPreference);
-  }, []);
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
     if (prefersReducedMotion) return;
@@ -31,16 +23,28 @@ export const Hero = () => {
 
   return (
     <section id="home" className={heroClassName} aria-label="Introduction">
-      <div className="hero-layer" />
+      <div className="hero-layer" role="presentation" />
+      <div className="hero-glow" aria-hidden="true" />
       <div className="hero-overlay">
         <p className="hero-kicker">Software Engineer</p>
-        <h1>Dhairya Trivedi</h1>
+        <h1>
+          <span className="hero-name">Dhairya Trivedi</span>
+        </h1>
         <p className="hero-copy">
           I build innovative, interesting and useful software solutions that solve practical
           problems.
         </p>
-        <p className="hero-tagline hero-tagline--animated" aria-live="polite">
-          {prefersReducedMotion ? taglines[0] : taglines[taglineIndex]}
+        <p className="hero-tagline" aria-live="polite">
+          {prefersReducedMotion ? (
+            taglines[0]
+          ) : (
+            <>
+              <span className="hero-tagline-prefix">specialising in </span>
+              <span key={taglineIndex} className="hero-tagline-word">
+                {taglines[taglineIndex]}
+              </span>
+            </>
+          )}
         </p>
       </div>
     </section>

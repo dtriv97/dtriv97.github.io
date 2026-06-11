@@ -1,32 +1,26 @@
 import { useMemo, useState } from 'react';
-import { works, type WorkItem } from '@/data/works';
+import { works } from '@/data/works';
 import { Section } from '@/components/ui/Section';
 import { WorkTimelineCard } from '@/components/ui/WorkTimelineCard';
 
-/** Newest first; stable order for same year (roles before projects). */
-const sortByTimeline = (a: WorkItem, b: WorkItem) => {
-  const yearDiff = Number(b.start) - Number(a.start);
-  if (yearDiff !== 0) return yearDiff;
-  if (a.kind !== b.kind) return a.kind === 'role' ? -1 : 1;
-  return 0;
-};
+const roles = works.filter((item) => item.kind === 'role');
 
-export const Work = () => {
-  const sortedWorks = useMemo(() => [...works].sort(sortByTimeline), []);
+const sortByYear = (a: (typeof roles)[number], b: (typeof roles)[number]) =>
+  Number(b.start) - Number(a.start);
+
+export const Experience = () => {
+  const sortedRoles = useMemo(() => [...roles].sort(sortByYear), []);
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
   return (
-    <Section id="work" title="Past roles and projects" eyebrow="Selected work">
+    <Section id="experience" title="Where I've worked" eyebrow="Career">
       <div className="timeline">
-        {sortedWorks.map((item, index) => {
+        {sortedRoles.map((item, index) => {
           const side = index % 2 === 0 ? 'left' : 'right';
           const isExpanded = expandedId === item.id;
 
           return (
-            <div
-              key={item.id}
-              className={`timeline-row ${item.kind === 'project' ? 'timeline-row--project' : ''}`}
-            >
+            <div key={item.id} className="timeline-row">
               <div className="timeline-row-side timeline-row-side--left">
                 {side === 'left' ? (
                   <WorkTimelineCard

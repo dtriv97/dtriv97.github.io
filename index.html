@@ -13,7 +13,7 @@
       content="Portfolio of software engineering work, projects, and references."
     />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="/hero-bg.jpg" />
+    <meta property="og:image" content="/hero-bg.webp" />
     <meta property="og:url" content="https://www.dtriv.tech" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Dhairya Trivedi | Software Engineer" />
@@ -21,16 +21,25 @@
       name="twitter:description"
       content="Portfolio of software engineering work, projects, and references."
     />
-    <meta name="twitter:image" content="/hero-bg.jpg" />
+    <meta name="twitter:image" content="/hero-bg.webp" />
     <meta name="theme-color" content="#0f1115" />
     <link rel="icon" type="image/png" href="/logo.png" />
     <link rel="apple-touch-icon" href="/logo.png" />
+    <link rel="preload" as="image" href="/hero-bg.webp" type="image/webp" fetchpriority="high" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
     <title>Dhairya Trivedi | Software Engineer</title>
   </head>
   <body>
