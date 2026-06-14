@@ -7,9 +7,13 @@ export const About = () => (
   <Section
     id="about"
     title="Engineer at the intersection"
-    eyebrow="About"
+    eyebrow="An intro…"
     className="about-section"
-    background={<AboutCircuitBg />}
+    background={
+      <div className="about-motif-wrap" aria-hidden="true">
+        <AboutCircuitBg />
+      </div>
+    }
   >
     <div className="about-layout">
       <div className="about-photo-wrap">
@@ -37,7 +41,9 @@ export const About = () => (
             <p className="about-skills-label">{group.label}</p>
             <ul className="about-skills-list">
               {group.items.map((skill) => (
-                <li key={skill}>{skill}</li>
+                <li key={skill}>
+                  <span className="skill-chip">{skill}</span>
+                </li>
               ))}
             </ul>
           </div>
