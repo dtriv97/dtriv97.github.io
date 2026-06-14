@@ -13,7 +13,7 @@ export const Projects = () => {
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
   return (
-    <Section id="projects" title="Personal and contract work" eyebrow="Projects">
+    <Section id="projects" title="Personal and contract work" eyebrow="Projects" theme="light">
       <div className="projects-masonry">
         {projects.map((project) => (
           <ProjectTile

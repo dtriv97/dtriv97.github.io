@@ -16,7 +16,7 @@ export const App = () => {
         <Projects />
         <Contact />
       </main>
-      <footer className="site-footer">Built with React, TypeScript and intention.</footer>
+      <footer className="site-footer theme-dark">Built with React, TypeScript and intention.</footer>
     </>
   );
 };

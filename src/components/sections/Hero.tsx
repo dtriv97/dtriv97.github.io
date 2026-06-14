@@ -18,8 +18,8 @@ export const Hero = () => {
   }, [prefersReducedMotion]);
 
   const heroClassName = prefersReducedMotion
-    ? 'hero-section'
-    : 'hero-section is-animated';
+    ? 'hero-section theme-dark'
+    : 'hero-section theme-dark is-animated';
 
   return (
     <section id="home" className={heroClassName} aria-label="Introduction">

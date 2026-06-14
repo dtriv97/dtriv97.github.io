@@ -13,7 +13,7 @@ export const Experience = () => {
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
   return (
-    <Section id="experience" title="Where I've worked" eyebrow="Career">
+    <Section id="experience" title="Where I've worked" eyebrow="Career" theme="dark">
       <div className="timeline">
         {sortedRoles.map((item, index) => {
           const side = index % 2 === 0 ? 'left' : 'right';

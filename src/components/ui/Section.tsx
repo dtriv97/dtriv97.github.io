@@ -6,6 +6,7 @@ type SectionProps = {
   title: string;
   eyebrow?: string;
   className?: string;
+  theme?: 'light' | 'dark';
   background?: ReactNode;
   children: ReactNode;
 };
@@ -15,12 +16,14 @@ export const Section = ({
   title,
   eyebrow = 'Portfolio',
   className,
+  theme = 'dark',
   background,
   children,
 }: SectionProps) => {
   const headerRef = useRef<HTMLDivElement>(null);
   const isVisible = useInView(headerRef, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
-  const sectionClass = className ? `section ${className}` : 'section';
+  const themeClass = theme === 'light' ? 'theme-light' : 'theme-dark';
+  const sectionClass = className ? `section ${themeClass} ${className}` : `section ${themeClass}`;
 
   return (
     <section id={id} className={sectionClass} aria-labelledby={`${id}-title`}>

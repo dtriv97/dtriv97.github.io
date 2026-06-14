@@ -1,5 +1,4 @@
 import { skillGroups } from '@/data/skills';
-import { AboutCircuitBg } from '@/components/ui/AboutCircuitBg';
 import { AboutPhoto } from '@/components/ui/AboutPhoto';
 import { Section } from '@/components/ui/Section';
 
@@ -9,11 +8,7 @@ export const About = () => (
     title="Engineer at the intersection"
     eyebrow="An intro…"
     className="about-section"
-    background={
-      <div className="about-motif-wrap" aria-hidden="true">
-        <AboutCircuitBg />
-      </div>
-    }
+    theme="light"
   >
     <div className="about-layout">
       <div className="about-photo-wrap">

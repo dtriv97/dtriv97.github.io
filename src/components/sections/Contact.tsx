@@ -62,7 +62,7 @@ export const Contact = () => {
   };
 
   return (
-    <Section id="contact" title="Get in touch" eyebrow="Contact">
+    <Section id="contact" title="Get in touch" eyebrow="Contact" theme="dark">
       <div className="contact-grid">
         <aside className="contact-links">
           <a href="/cv-placeholder.txt" target="_blank" rel="noreferrer">

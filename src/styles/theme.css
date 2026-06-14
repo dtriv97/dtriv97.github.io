@@ -1,0 +1,113 @@
+/* —— Raw palette — edit here for site-wide color changes —— */
+:root {
+  --punch-red: #e63946;
+  --honeydew: #f1faee;
+  --frosted-blue: #a8dadc;
+  --cerulean: #457b9d;
+  --oxford-navy: #1d3557;
+  --deep-black: #1a1a1a;
+
+  /* Accent derived */
+  --accent: var(--punch-red);
+  --accent-hover: #ef5560;
+  --accent-secondary: var(--cerulean);
+  --accent-secondary-hover: #5a8fb0;
+  --accent-dim: rgb(230 57 70 / 14%);
+  --accent-glow: rgb(230 57 70 / 22%);
+  --accent-border: rgb(230 57 70 / 35%);
+  --accent-secondary-dim: rgb(69 123 157 / 14%);
+  --accent-secondary-glow: rgb(69 123 157 / 22%);
+  --accent-secondary-border: rgb(69 123 157 / 35%);
+
+  /* Layout & shape (theme-independent) */
+  --header-height: 4.5rem;
+  --content-max: 68rem;
+  --page-padding: clamp(1.25rem, 4vw, 2.5rem);
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --shadow-card: 0 12px 40px rgb(0 0 0 / 32%);
+  --shadow-glow: 0 0 48px rgb(230 57 70 / 12%);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Default to dark theme (hero, header, footer) */
+  --bg: var(--oxford-navy);
+  --bg-elevated: var(--deep-black);
+  --bg-soft: #152a45;
+  --text: #fff;
+  --text-muted: rgb(255 255 255 / 72%);
+  --line: rgb(168 218 220 / 28%);
+  --card: var(--deep-black);
+  --card-hover: #222222;
+  --surface-border: rgb(255 255 255 / 8%);
+  --surface-border-strong: rgb(255 255 255 / 12%);
+  --surface-overlay: rgb(255 255 255 / 6%);
+  --surface-overlay-strong: rgb(255 255 255 / 18%);
+  --grid-line: rgb(255 255 255 / 4%);
+  --header-scrolled-bg: rgb(26 26 26 / 88%);
+  --chip-bg: rgb(26 26 26 / 90%);
+  --skill-chip-bg: rgb(29 53 87 / 70%);
+  --mobile-nav-bg: rgb(26 26 26 / 96%);
+  --accent-gradient-end: rgb(230 57 70 / 25%);
+  --accent-secondary-gradient-end: rgb(69 123 157 / 25%);
+  --about-skills-bg: rgb(26 26 26 / 78%);
+  --about-skills-group-bg: rgb(0 0 0 / 18%);
+  --about-radial: rgb(69 123 157 / 4%);
+  --experience-radial: rgb(168 218 220 / 5%);
+  --footer-gradient: rgb(230 57 70 / 4%);
+  --body-radial: rgb(230 57 70 / 6%);
+  --contact-btn-shadow: rgb(230 57 70 / 25%);
+  --contact-btn-shadow-hover: rgb(230 57 70 / 35%);
+}
+
+.theme-dark {
+  color: var(--text);
+  --bg: var(--oxford-navy);
+  --bg-elevated: var(--deep-black);
+  --bg-soft: #152a45;
+  --text: #fff;
+  --text-muted: rgb(255 255 255 / 72%);
+  --line: rgb(168 218 220 / 28%);
+  --card: var(--deep-black);
+  --card-hover: #222222;
+  --surface-border: rgb(255 255 255 / 8%);
+  --surface-border-strong: rgb(255 255 255 / 12%);
+  --surface-overlay: rgb(255 255 255 / 6%);
+  --surface-overlay-strong: rgb(255 255 255 / 18%);
+  --grid-line: rgb(255 255 255 / 4%);
+  --chip-bg: rgb(26 26 26 / 90%);
+  --skill-chip-bg: rgb(29 53 87 / 70%);
+  --about-skills-bg: rgb(26 26 26 / 78%);
+  --about-skills-group-bg: rgb(0 0 0 / 18%);
+  --about-radial: rgb(69 123 157 / 4%);
+  --experience-radial: rgb(168 218 220 / 5%);
+  --accent-gradient-end: rgb(230 57 70 / 25%);
+  --accent-secondary-gradient-end: rgb(69 123 157 / 25%);
+}
+
+.theme-light {
+  color: var(--text);
+  --bg: var(--honeydew);
+  --bg-elevated: #e8f4ea;
+  --bg-soft: #dceee0;
+  --text: #000;
+  --text-muted: rgb(0 0 0 / 65%);
+  --line: rgb(69 123 157 / 28%);
+  --card: #fff;
+  --card-hover: #f5fbf6;
+  --surface-border: rgb(0 0 0 / 8%);
+  --surface-border-strong: rgb(0 0 0 / 12%);
+  --surface-overlay: rgb(0 0 0 / 4%);
+  --surface-overlay-strong: rgb(0 0 0 / 8%);
+  --grid-line: rgb(0 0 0 / 4%);
+  --chip-bg: rgb(255 255 255 / 90%);
+  --skill-chip-bg: rgb(241 250 238 / 70%);
+  --about-skills-bg: rgb(255 255 255 / 78%);
+  --about-skills-group-bg: rgb(168 218 220 / 18%);
+  --about-radial: rgb(69 123 157 / 8%);
+  --experience-radial: rgb(69 123 157 / 6%);
+  --accent-gradient-end: rgb(230 57 70 / 18%);
+  --accent-secondary-gradient-end: rgb(69 123 157 / 18%);
+  --shadow-card: 0 12px 40px rgb(0 0 0 / 8%);
+  --shadow-glow: 0 0 48px rgb(230 57 70 / 8%);
+}
