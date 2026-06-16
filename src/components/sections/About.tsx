@@ -6,9 +6,10 @@ export const About = () => (
   <Section
     id="about"
     title="Engineer at the intersection"
-    eyebrow="An intro…"
+    eyebrow="About"
     className="about-section"
     theme="light"
+    atmosphere="about"
   >
     <div className="about-layout">
       <div className="about-photo-wrap">
@@ -16,15 +17,14 @@ export const About = () => (
       </div>
       <div className="about-copy">
         <p>
-          I build innovative, interesting, and useful software that solves practical problems —
-          from embedded systems and IoT device workflows to full-stack applications and the tools
-          teams rely on every day.
+          I care about clear architecture, reliable delivery, and software that stays maintainable
+          long after the first release. My work spans embedded systems, IoT device workflows,
+          full-stack applications, and the internal tools teams depend on.
         </p>
         <p>
-          I care about clear architecture, reliable delivery, and software that stays maintainable
-          long after the first release. Whether it is edge provisioning, a product dashboard, or an
-          internal automation platform, I aim for solutions that are thoughtful, robust, and genuinely
-          useful.
+          Whether it is edge provisioning, a product dashboard, or an automation platform, I aim for
+          solutions that are thoughtful, robust, and genuinely useful — built to last, not just to
+          ship.
         </p>
       </div>
     </div>

@@ -1,26 +1,30 @@
 import { useMemo, useState } from 'react';
-import { works } from '@/data/works';
 import { Section } from '@/components/ui/Section';
 import { WorkTimelineCard } from '@/components/ui/WorkTimelineCard';
-
-const roles = works.filter((item) => item.kind === 'role');
-
-const sortByYear = (a: (typeof roles)[number], b: (typeof roles)[number]) =>
-  Number(b.start) - Number(a.start);
+import { getTimelineItems } from '@/lib/works';
 
 export const Experience = () => {
-  const sortedRoles = useMemo(() => [...roles].sort(sortByYear), []);
+  const timelineItems = useMemo(() => getTimelineItems(), []);
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
   return (
-    <Section id="experience" title="Where I've worked" eyebrow="Career" theme="dark">
+    <Section
+      id="experience"
+      title="Where I've worked"
+      eyebrow="Career"
+      theme="dark"
+      atmosphere="experience"
+      intro="Roles and selected projects — each build ties back to the team and context it shipped in."
+    >
       <div className="timeline">
-        {sortedRoles.map((item, index) => {
+        {timelineItems.map((item, index) => {
           const side = index % 2 === 0 ? 'left' : 'right';
           const isExpanded = expandedId === item.id;
+          const rowClass =
+            item.kind === 'project' ? 'timeline-row timeline-row--project' : 'timeline-row';
 
           return (
-            <div key={item.id} className="timeline-row">
+            <div key={item.id} className={rowClass}>
               <div className="timeline-row-side timeline-row-side--left">
                 {side === 'left' ? (
                   <WorkTimelineCard

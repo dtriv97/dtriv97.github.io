@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
+import { scrollToSection } from '@/lib/scrollTo';
 
 const taglines = ['embedded systems', 'full-stack apps', 'useful tools'];
 
@@ -24,15 +25,14 @@ export const Hero = () => {
   return (
     <section id="home" className={heroClassName} aria-label="Introduction">
       <div className="hero-layer" role="presentation" />
-      <div className="hero-glow" aria-hidden="true" />
       <div className="hero-overlay">
         <p className="hero-kicker">Software Engineer</p>
         <h1>
           <span className="hero-name">Dhairya Trivedi</span>
         </h1>
         <p className="hero-copy">
-          I build innovative, interesting and useful software solutions that solve practical
-          problems.
+          Software that solves practical problems — from edge devices and IoT workflows to
+          full-stack platforms teams rely on every day.
         </p>
         <p className="hero-tagline" aria-live="polite">
           {prefersReducedMotion ? (
@@ -46,6 +46,14 @@ export const Hero = () => {
             </>
           )}
         </p>
+        <div className="hero-actions">
+          <button type="button" className="btn btn-primary" onClick={() => scrollToSection('experience')}>
+            View experience
+          </button>
+          <button type="button" className="btn btn-ghost" onClick={() => scrollToSection('contact')}>
+            Get in touch
+          </button>
+        </div>
       </div>
     </section>
   );

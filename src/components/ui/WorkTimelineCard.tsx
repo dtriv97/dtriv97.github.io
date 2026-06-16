@@ -1,6 +1,8 @@
-import { useRef } from 'react';
-import { WorkItem, works } from '@/data/works';
+import { MouseEvent, useRef } from 'react';
+import type { WorkItem } from '@/data/works';
 import { useInView } from '@/hooks/useInView';
+import { getRoleLabel } from '@/lib/works';
+import { scrollToSection } from '@/lib/scrollTo';
 
 type WorkTimelineCardProps = {
   item: WorkItem;
@@ -8,13 +10,6 @@ type WorkTimelineCardProps = {
   isExpanded: boolean;
   onToggle: () => void;
 };
-
-const roleLabelById = works.reduce<Record<string, string>>((acc, entry) => {
-  if (entry.kind === 'role') {
-    acc[entry.id] = entry.company;
-  }
-  return acc;
-}, {});
 
 export const WorkTimelineCard = ({
   item,
@@ -24,11 +19,17 @@ export const WorkTimelineCard = ({
 }: WorkTimelineCardProps) => {
   const cardRef = useRef<HTMLElement>(null);
   const isVisible = useInView(cardRef, { threshold: 0.1 });
+  const bodyId = `${item.id}-body`;
+
+  const onProjectsLink = (event: MouseEvent<HTMLAnchorElement>) => {
+    event.stopPropagation();
+    scrollToSection('projects');
+  };
 
   return (
     <article
       ref={cardRef}
-      className={`timeline-card ${item.kind} ${side} ${isExpanded ? 'expanded' : ''} ${
+      className={`timeline-card surface-card ${item.kind} ${side} ${isExpanded ? 'expanded' : ''} ${
         isVisible || isExpanded ? 'is-visible' : ''
       }`}
       onClick={onToggle}
@@ -41,10 +42,11 @@ export const WorkTimelineCard = ({
       role="button"
       tabIndex={0}
       aria-expanded={isExpanded}
+      aria-controls={bodyId}
     >
       {item.kind === 'project' && item.relatedRoleId ? (
         <p className="timeline-connector">
-          Built while at {roleLabelById[item.relatedRoleId] ?? 'previous role'}
+          Built while at {getRoleLabel(item.relatedRoleId)}
         </p>
       ) : null}
       <header className="timeline-head">
@@ -56,7 +58,12 @@ export const WorkTimelineCard = ({
         </p>
       </header>
 
-      <div className={`timeline-body ${isExpanded ? 'is-open' : ''}`}>
+      <div className="card-expand-hint" aria-hidden="true">
+        <span>{isExpanded ? 'Show less' : 'View details'}</span>
+        <span className={`expand-chevron ${isExpanded ? 'is-open' : ''}`} />
+      </div>
+
+      <div id={bodyId} className={`timeline-body ${isExpanded ? 'is-open' : ''}`}>
         <div className="timeline-body-inner">
           {item.kind === 'role' ? (
             <>
@@ -77,6 +84,9 @@ export const WorkTimelineCard = ({
                   </span>
                 ))}
               </div>
+              <a href="#projects" onClick={onProjectsLink}>
+                Full details in Projects
+              </a>
               {item.url ? (
                 <a
                   href={item.url}

@@ -2,8 +2,7 @@ import { useMemo, useState } from 'react';
 import { works } from '@/data/works';
 import { Section } from '@/components/ui/Section';
 import { ProjectTile, type Project } from '@/components/ui/ProjectTile';
-
-const sortByYear = (a: Project, b: Project) => Number(b.start) - Number(a.start);
+import { sortByYear } from '@/lib/works';
 
 export const Projects = () => {
   const projects = useMemo(
@@ -13,7 +12,14 @@ export const Projects = () => {
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
   return (
-    <Section id="projects" title="Personal and contract work" eyebrow="Projects" theme="light">
+    <Section
+      id="projects"
+      title="Selected builds from recent roles"
+      eyebrow="Projects"
+      theme="light"
+      atmosphere="projects"
+      intro="Highlighted work from the timeline above — expand any card for stack details and links."
+    >
       <div className="projects-masonry">
         {projects.map((project) => (
           <ProjectTile

@@ -8,6 +8,11 @@ type FormState = {
   website: string;
 };
 
+type StatusState = {
+  type: 'error' | 'success';
+  message: string;
+} | null;
+
 const initialState: FormState = {
   name: '',
   email: '',
@@ -17,7 +22,8 @@ const initialState: FormState = {
 
 export const Contact = () => {
   const [form, setForm] = useState<FormState>(initialState);
-  const [status, setStatus] = useState<string>('');
+  const [status, setStatus] = useState<StatusState>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const validate = () => {
     if (form.name.trim().length < 2) return 'Please enter your name.';
@@ -28,13 +34,16 @@ export const Contact = () => {
 
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (form.website) return;
+    if (form.website || isSubmitting) return;
 
     const validationError = validate();
     if (validationError) {
-      setStatus(validationError);
+      setStatus({ type: 'error', message: validationError });
       return;
     }
+
+    setIsSubmitting(true);
+    setStatus(null);
 
     try {
       const response = await fetch('/api/contact', {
@@ -50,21 +59,24 @@ export const Contact = () => {
 
       const payload = (await response.json()) as { message?: string };
       if (!response.ok) {
-        setStatus(payload.message ?? 'Unable to send message.');
+        setStatus({ type: 'error', message: payload.message ?? 'Unable to send message.' });
         return;
       }
 
-      setStatus(payload.message ?? 'Message sent.');
+      setStatus({ type: 'success', message: payload.message ?? 'Message sent.' });
       setForm(initialState);
     } catch {
-      setStatus('Unable to send right now. Please email me directly.');
+      setStatus({ type: 'error', message: 'Unable to send right now. Please email me directly.' });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <Section id="contact" title="Get in touch" eyebrow="Contact" theme="dark">
+    <Section id="contact" title="Get in touch" eyebrow="Contact" theme="dark" atmosphere="contact">
       <div className="contact-grid">
         <aside className="contact-links">
+          <p className="contact-links-heading">Quick links</p>
           <a href="/cv-placeholder.txt" target="_blank" rel="noreferrer">
             View CV
           </a>
@@ -78,48 +90,68 @@ export const Contact = () => {
           <a href="mailto:hello@example.com">Email</a>
         </aside>
 
-        <form className="contact-form" onSubmit={onSubmit} noValidate>
-          <input
-            type="text"
-            name="name"
-            placeholder="Name"
-            value={form.name}
-            required
-            onChange={(event) => setForm((prev) => ({ ...prev, name: event.target.value }))}
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={form.email}
-            required
-            onChange={(event) => setForm((prev) => ({ ...prev, email: event.target.value }))}
-          />
-          <textarea
-            name="message"
-            placeholder="Message"
-            value={form.message}
-            rows={5}
-            required
-            onChange={(event) => setForm((prev) => ({ ...prev, message: event.target.value }))}
-          />
-          <input
-            type="text"
-            name="website"
-            value={form.website}
-            tabIndex={-1}
-            autoComplete="off"
-            aria-hidden="true"
-            className="hp"
-            onChange={(event) => setForm((prev) => ({ ...prev, website: event.target.value }))}
-          />
-          <button type="submit">Send message</button>
-          {status ? (
-            <p className="form-status" role="status">
-              {status}
-            </p>
-          ) : null}
-        </form>
+        <div className="contact-form-wrap">
+          <p className="contact-form-heading">Or send a message</p>
+          <form className="contact-form" onSubmit={onSubmit} noValidate>
+            <div className="form-field">
+              <label htmlFor="contact-name">Name</label>
+              <input
+                id="contact-name"
+                type="text"
+                name="name"
+                placeholder="Your name"
+                value={form.name}
+                required
+                disabled={isSubmitting}
+                onChange={(event) => setForm((prev) => ({ ...prev, name: event.target.value }))}
+              />
+            </div>
+            <div className="form-field">
+              <label htmlFor="contact-email">Email</label>
+              <input
+                id="contact-email"
+                type="email"
+                name="email"
+                placeholder="you@example.com"
+                value={form.email}
+                required
+                disabled={isSubmitting}
+                onChange={(event) => setForm((prev) => ({ ...prev, email: event.target.value }))}
+              />
+            </div>
+            <div className="form-field">
+              <label htmlFor="contact-message">Message</label>
+              <textarea
+                id="contact-message"
+                name="message"
+                placeholder="What would you like to discuss?"
+                value={form.message}
+                rows={5}
+                required
+                disabled={isSubmitting}
+                onChange={(event) => setForm((prev) => ({ ...prev, message: event.target.value }))}
+              />
+            </div>
+            <input
+              type="text"
+              name="website"
+              value={form.website}
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              className="hp"
+              onChange={(event) => setForm((prev) => ({ ...prev, website: event.target.value }))}
+            />
+            <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
+              {isSubmitting ? 'Sending…' : 'Send message'}
+            </button>
+            {status ? (
+              <p className={`form-status form-status--${status.type}`} role="status">
+                {status.message}
+              </p>
+            ) : null}
+          </form>
+        </div>
       </div>
     </Section>
   );
