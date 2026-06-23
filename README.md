@@ -33,23 +33,34 @@ npm run build
 npm run preview
 ```
 
-### Contact form stub
+### Contact form
 
-The client posts to `/api/contact`.
+The client posts to `/api/contact`. Submissions are delivered to your inbox via [Resend](https://resend.com), which works well with Vercel serverless functions (no SMTP, good deliverability, simple API).
 
-Current behavior:
+**Setup**
 
-- validates payload server-side (name, email, message length limits)
-- silently accepts honeypot submissions (`website` field)
-- logs valid submissions in server output
-- returns a success response without sending email
-
-Planned environment variables for real email delivery (set in Vercel project settings, never in client code):
+1. Create a free [Resend](https://resend.com) account.
+2. Add and verify your domain (e.g. `dtriv.tech`) under [Domains](https://resend.com/domains).
+3. Create an API key under [API Keys](https://resend.com/api-keys).
+4. In your Vercel project → **Settings → Environment Variables**, add:
 
 | Variable | Purpose |
 |----------|---------|
-| `CONTACT_TO_EMAIL` | Inbox that receives form submissions |
 | `RESEND_API_KEY` | Resend API key for outbound email |
+| `CONTACT_TO_EMAIL` | Your inbox — where form submissions are delivered |
+| `CONTACT_FROM_EMAIL` | Verified sender, e.g. `Portfolio Contact <contact@dtriv.tech>` |
+| `VITE_CONTACT_EMAIL` | Optional — email shown in the contact section mailto link |
+
+5. Redeploy after adding env vars.
+
+For local testing, copy `.env.example` to `.env.local` and run `npm run dev:vercel` (Vite dev uses the same handler but needs env vars loaded by Vercel CLI).
+
+**Behavior**
+
+- validates payload server-side (name, email, message length limits)
+- silently accepts honeypot submissions (`website` field)
+- sends email via Resend with `replyTo` set to the visitor's address
+- returns a friendly error if email delivery is not configured
 
 ### Deploy (Vercel)
 
@@ -72,7 +83,7 @@ After deploy, verify on desktop and at 375px width:
 - [ ] Nav links scroll to `#home`, `#work`, `#testimonials`, `#contact`
 - [ ] Mobile hamburger opens/closes; Escape closes menu
 - [ ] Work timeline cards expand on click
-- [ ] Contact form POST returns success message
+- [ ] Contact form POST delivers email to your inbox (requires Resend env vars)
 - [ ] CV link opens (`/cv-placeholder.txt` until real PDF is added)
 - [ ] LinkedIn link opens in new tab
 - [ ] `prefers-reduced-motion: reduce` disables hero motion and marquee

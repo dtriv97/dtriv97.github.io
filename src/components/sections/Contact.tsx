@@ -1,5 +1,6 @@
 import { FormEvent, useState } from 'react';
 import { Section } from '@/components/ui/Section';
+import { CONTACT_EMAIL } from '@/config/site';
 
 type FormState = {
   name: string;
@@ -66,7 +67,7 @@ export const Contact = () => {
       setStatus({ type: 'success', message: payload.message ?? 'Message sent.' });
       setForm(initialState);
     } catch {
-      setStatus({ type: 'error', message: 'Unable to send right now. Please email me directly.' });
+      setStatus({ type: 'error', message: `Unable to send right now. Please email me at ${CONTACT_EMAIL}.` });
     } finally {
       setIsSubmitting(false);
     }
@@ -87,7 +88,7 @@ export const Contact = () => {
           >
             LinkedIn
           </a>
-          <a href="mailto:hello@example.com">Email</a>
+          <a href={`mailto:${CONTACT_EMAIL}`}>Email</a>
         </aside>
 
         <div className="contact-form-wrap">
