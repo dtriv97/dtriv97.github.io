@@ -38,7 +38,7 @@ const contactDevMiddleware = async (req: IncomingMessage, res: ServerResponse, n
 
   try {
     const payload = await readJsonBody(req);
-    const result = handleContactSubmission(payload);
+    const result = await handleContactSubmission(payload);
     res.statusCode = result.status;
     res.setHeader('Content-Type', 'application/json');
     res.end(JSON.stringify(result.body));
