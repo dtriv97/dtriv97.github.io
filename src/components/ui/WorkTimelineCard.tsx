@@ -1,4 +1,4 @@
-import { MouseEvent, useRef } from 'react';
+import { CSSProperties, MouseEvent, useRef } from 'react';
 import type { WorkItem } from '@/data/works';
 import { useInView } from '@/hooks/useInView';
 import { getRoleLabel } from '@/lib/works';
@@ -67,31 +67,47 @@ export const WorkTimelineCard = ({
         <div className="timeline-body-inner">
           {item.kind === 'role' ? (
             <>
-              <p>{item.summary}</p>
-              <ul>
-                {item.highlights.map((highlight) => (
-                  <li key={highlight}>{highlight}</li>
+              <p className="timeline-body-lead">{item.summary}</p>
+              <ul className="timeline-highlights">
+                {item.highlights.map((highlight, index) => (
+                  <li
+                    key={highlight}
+                    style={{ '--item-stagger': `${index * 80}ms` } as CSSProperties}
+                  >
+                    {highlight}
+                  </li>
                 ))}
               </ul>
             </>
           ) : (
             <>
-              <p>{item.description}</p>
-              <div className="chip-row">
-                {item.stack.map((tech) => (
-                  <span key={tech} className="chip">
+              <p className="timeline-body-lead">{item.description}</p>
+              <div className="chip-row timeline-body-chips">
+                {item.stack.map((tech, index) => (
+                  <span
+                    key={tech}
+                    className="chip"
+                    style={{ '--item-stagger': `${(index + 1) * 80}ms` } as CSSProperties}
+                  >
                     {tech}
                   </span>
                 ))}
               </div>
-              <a href="#projects" onClick={onProjectsLink}>
+              <a
+                className="timeline-body-link"
+                href="#projects"
+                onClick={onProjectsLink}
+                style={{ '--item-stagger': `${(item.stack.length + 1) * 80}ms` } as CSSProperties}
+              >
                 Full details in Projects
               </a>
               {item.url ? (
                 <a
+                  className="timeline-body-link"
                   href={item.url}
                   target="_blank"
                   rel="noreferrer"
+                  style={{ '--item-stagger': `${(item.stack.length + 2) * 80}ms` } as CSSProperties}
                   onClick={(event) => event.stopPropagation()}
                 >
                   View project

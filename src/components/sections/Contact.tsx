@@ -1,6 +1,6 @@
 import { FormEvent, useState } from 'react';
 import { Section } from '@/components/ui/Section';
-import { CONTACT_EMAIL } from '@/config/site';
+import { siteContact } from '@/data/site';
 
 type FormState = {
   name: string;
@@ -67,7 +67,7 @@ export const Contact = () => {
       setStatus({ type: 'success', message: payload.message ?? 'Message sent.' });
       setForm(initialState);
     } catch {
-      setStatus({ type: 'error', message: `Unable to send right now. Please email me at ${CONTACT_EMAIL}.` });
+      setStatus({ type: 'error', message: `Unable to send right now. Please email me at ${siteContact.email}.` });
     } finally {
       setIsSubmitting(false);
     }
@@ -78,17 +78,13 @@ export const Contact = () => {
       <div className="contact-grid">
         <aside className="contact-links">
           <p className="contact-links-heading">Quick links</p>
-          <a href="/cv-placeholder.txt" target="_blank" rel="noreferrer">
+          <a href={siteContact.cvPath} target="_blank" rel="noreferrer">
             View CV
           </a>
-          <a
-            href="https://www.linkedin.com/in/dhairya-trivedi-44b356144/"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a href={siteContact.linkedIn} target="_blank" rel="noreferrer">
             LinkedIn
           </a>
-          <a href={`mailto:${CONTACT_EMAIL}`}>Email</a>
+          <a href={`mailto:${siteContact.email}`}>{siteContact.email}</a>
         </aside>
 
         <div className="contact-form-wrap">
@@ -154,6 +150,10 @@ export const Contact = () => {
           </form>
         </div>
       </div>
+
+      <p className="contact-signoff">
+        Thanks for stopping by — if something here resonated, I&apos;d love to hear from you.
+      </p>
     </Section>
   );
 };

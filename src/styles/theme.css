@@ -39,6 +39,9 @@
   --radius-sm: 10px;
   --radius-md: 14px;
   --radius-lg: 18px;
+  --about-skills-inner-radius: var(--radius-sm);
+  --about-skills-padding: clamp(1.35rem, 3vw, 1.75rem);
+  --about-skills-outer-radius: calc(var(--about-skills-inner-radius) + var(--about-skills-padding));
   --band-fade: clamp(3rem, 8vw, 6rem);
 
   /* Hero controls (always on dark photo) */
@@ -95,7 +98,6 @@
   --experience-radial: rgb(168 218 220 / 5%);
   --projects-radial: rgb(230 57 70 / 4%);
   --contact-radial: rgb(230 57 70 / 6%);
-  --footer-gradient: rgb(230 57 70 / 4%);
   --band-edge: rgb(168 218 220 / 12%);
   --shadow-card: 0 12px 40px rgb(0 0 0 / 32%);
   --shadow-glow: 0 0 48px rgb(230 57 70 / 12%);
@@ -134,7 +136,6 @@
   --experience-radial: rgb(69 123 157 / 6%);
   --projects-radial: rgb(69 123 157 / 6%);
   --contact-radial: rgb(230 57 70 / 4%);
-  --footer-gradient: rgb(69 123 157 / 6%);
   --band-edge: rgb(69 123 157 / 14%);
   --shadow-card: 0 12px 40px rgb(0 0 0 / 8%);
   --shadow-glow: 0 0 48px rgb(230 57 70 / 8%);

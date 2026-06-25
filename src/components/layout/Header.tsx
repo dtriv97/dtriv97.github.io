@@ -1,29 +1,42 @@
-import { MouseEvent, useCallback, useEffect, useRef, useState } from 'react';
+import { CSSProperties, MouseEvent, useCallback, useEffect, useRef, useState } from 'react';
+import { navItems, sectionThemes } from '@/data/navigation';
+import { KeyboardShortcuts } from '@/components/ui/KeyboardShortcuts';
 import { useFocusTrap } from '@/hooks/useFocusTrap';
+import { useKeyboardNav } from '@/hooks/useKeyboardNav';
 import { useRafScroll } from '@/hooks/useRafScroll';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
 import { scrollToSection } from '@/lib/scrollTo';
-
-const navItems = [
-  { id: 'home', label: 'Home' },
-  { id: 'about', label: 'About' },
-  { id: 'experience', label: 'Experience' },
-  { id: 'projects', label: 'Projects' },
-  { id: 'contact', label: 'Contact' },
-];
 
 export const Header = () => {
   const sectionIds = navItems.map((item) => item.id);
   const { active: activeId, setActive: setActiveId } = useScrollSpy(sectionIds);
   const [open, setOpen] = useState(false);
+  const [shortcutsOpen, setShortcutsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const menuToggleRef = useRef<HTMLButtonElement>(null);
   const mobileNavRef = useRef<HTMLElement>(null);
 
-  const syncScrolled = useCallback(() => setScrolled(window.scrollY > 40), []);
-  useRafScroll(syncScrolled);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  const syncScroll = useCallback(() => {
+    setScrolled(window.scrollY > 40);
+    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    setScrollProgress(scrollable > 0 ? window.scrollY / scrollable : 0);
+  }, []);
+
+  useRafScroll(syncScroll);
 
   useFocusTrap(mobileNavRef, menuToggleRef, open);
+
+  const showShortcuts = useCallback(() => setShortcutsOpen(true), []);
+  const hideShortcuts = useCallback(() => setShortcutsOpen(false), []);
+
+  useKeyboardNav({
+    helpOpen: shortcutsOpen,
+    onShowHelp: showShortcuts,
+    onHideHelp: hideShortcuts,
+    setActiveId,
+  });
 
   useEffect(() => {
     const onEsc = (event: KeyboardEvent) => {
@@ -46,9 +59,14 @@ export const Header = () => {
     setOpen(false);
   };
 
+  const activeTheme = sectionThemes[activeId as keyof typeof sectionThemes] ?? 'dark';
+  const headerContext = scrolled && activeTheme === 'light' ? 'light' : 'dark';
+
   return (
     <>
-      <header className={`site-header theme-dark ${scrolled ? 'is-scrolled' : ''}`}>
+      <header
+        className={`site-header theme-dark ${scrolled ? 'is-scrolled' : ''} header-context--${headerContext}`}
+      >
         <a
           className="brand"
           href="#home"
@@ -72,20 +90,41 @@ export const Header = () => {
           ))}
         </nav>
 
-        <button
-          ref={menuToggleRef}
-          type="button"
-          className={`menu-toggle ${open ? 'is-open' : ''}`}
-          onClick={() => setOpen((prev) => !prev)}
-          aria-expanded={open}
-          aria-controls="mobile-nav"
-          aria-label={open ? 'Close menu' : 'Open menu'}
-        >
-          <span />
-          <span />
-          <span />
-        </button>
+        <div className="header-actions">
+          <button
+            type="button"
+            className="shortcuts-trigger"
+            onClick={() => setShortcutsOpen((prev) => !prev)}
+            aria-label="Keyboard shortcuts"
+            aria-expanded={shortcutsOpen}
+            aria-controls="keyboard-shortcuts"
+          >
+            <kbd>?</kbd>
+          </button>
+
+          <button
+            ref={menuToggleRef}
+            type="button"
+            className={`menu-toggle ${open ? 'is-open' : ''}`}
+            onClick={() => setOpen((prev) => !prev)}
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+            aria-label={open ? 'Close menu' : 'Open menu'}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+        </div>
+
+        <div
+          className="scroll-progress"
+          style={{ transform: `scaleX(${scrollProgress})` }}
+          aria-hidden="true"
+        />
       </header>
+
+      <KeyboardShortcuts open={shortcutsOpen} onClose={hideShortcuts} />
 
       <button
         type="button"
@@ -103,11 +142,12 @@ export const Header = () => {
         aria-modal={open}
         role="dialog"
       >
-        {navItems.map((item) => (
+        {navItems.map((item, index) => (
           <a
             key={`${item.id}-mobile`}
             href={`#${item.id}`}
             className={`mobile-nav-link ${activeId === item.id ? 'active' : ''}`}
+            style={{ '--nav-stagger': `${index * 60}ms` } as CSSProperties}
             onClick={(event) => onNavigate(event, item.id)}
             aria-current={activeId === item.id ? 'page' : undefined}
             tabIndex={open ? undefined : -1}

@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { HeroCursorGlow } from '@/components/ui/HeroCursorGlow';
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
 import { scrollToSection } from '@/lib/scrollTo';
 
 const taglines = ['embedded systems', 'full-stack apps', 'useful tools'];
 
 export const Hero = () => {
+  const sectionRef = useRef<HTMLElement>(null);
   const [taglineIndex, setTaglineIndex] = useState(0);
   const prefersReducedMotion = usePrefersReducedMotion();
 
@@ -23,8 +25,9 @@ export const Hero = () => {
     : 'hero-section theme-dark is-animated';
 
   return (
-    <section id="home" className={heroClassName} aria-label="Introduction">
+    <section ref={sectionRef} id="home" className={heroClassName} aria-label="Introduction">
       <div className="hero-layer" role="presentation" />
+      <HeroCursorGlow sectionRef={sectionRef} />
       <div className="hero-overlay">
         <p className="hero-kicker">Software Engineer</p>
         <h1>
@@ -40,8 +43,10 @@ export const Hero = () => {
           ) : (
             <>
               <span className="hero-tagline-prefix">specialising in </span>
-              <span key={taglineIndex} className="hero-tagline-word">
-                {taglines[taglineIndex]}
+              <span className="hero-tagline-rotator">
+                <span key={taglineIndex} className="hero-tagline-word">
+                  {taglines[taglineIndex]}
+                </span>
               </span>
             </>
           )}

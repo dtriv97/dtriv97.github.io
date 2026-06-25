@@ -4,6 +4,7 @@ import { Contact } from './components/sections/Contact';
 import { Experience } from './components/sections/Experience';
 import { Hero } from './components/sections/Hero';
 import { Projects } from './components/sections/Projects';
+import { ScrollToTop } from './components/ui/ScrollToTop';
 
 export const App = () => {
   return (
@@ -16,7 +17,7 @@ export const App = () => {
         <Projects />
         <Contact />
       </main>
-      <footer className="site-footer theme-dark">Built with React, TypeScript and intention.</footer>
+      <ScrollToTop />
     </>
   );
 };
