@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { handleContactSubmission, type ContactPayload } from '../lib/contactHandler';
+import { handleContactSubmission, type ContactPayload } from '../lib/contactHandler.js';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {
